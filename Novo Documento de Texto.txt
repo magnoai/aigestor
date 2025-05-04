@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIgestor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #222;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+    .resultado {
+      margin-top: 20px;
+      background: #e0f7fa;
+      padding: 15px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>AIgestor</h1>
+    <p>Descubra como automatizar sua empresa com inteligência artificial.</p>
+
+    <label for="negocio">Qual seu tipo de negócio?</label>
+    <input type="text" id="negocio">
+
+    <label for="atendeClientes">Você responde clientes manualmente?</label>
+    <select id="atendeClientes">
+      <option value="sim">Sim</option>
+      <option value="nao">Não</option>
+    </select>
+
+    <label for="controleVendas">Você usa planilhas pra controlar vendas?</label>
+    <select id="controleVendas">
+      <option value="sim">Sim</option>
+      <option value="nao">Não</option>
+    </select>
+
+    <button onclick="gerarDiagnostico()">Ver Diagnóstico</button>
+
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    function gerarDiagnostico() {
+      const tipoNegocio = document.getElementById('negocio').value;
+      const atende = document.getElementById('atendeClientes').value;
+      const vendas = document.getElementById('controleVendas').value;
+
+      let diagnostico = `<strong>Seu tipo de negócio:</strong> ${tipoNegocio}<br><br>`;
+
+      if (atende === "sim") {
+        diagnostico += "👉 Você pode automatizar o atendimento com um chatbot.<br>";
+      } else {
+        diagnostico += "✅ Seu atendimento já está otimizado.<br>";
+      }
+
+      if (vendas === "sim") {
+        diagnostico += "👉 Recomendamos usar um sistema de vendas ou CRM simples para automatizar isso.<br>";
+      } else {
+        diagnostico += "✅ Seu controle de vendas está moderno.<br>";
+      }
+
+      document.getElementById('resultado').innerHTML = diagnostico;
+    }
+  </script>
+</body>
+</html>
